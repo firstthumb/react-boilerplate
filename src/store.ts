@@ -1,8 +1,20 @@
-import createStore from 'storeon'
-import {post, PostState, PostEvents} from '~/components/post'
+import {createStoreon} from 'storeon'
+import {
+  post,
+  PostState,
+  PostEvents,
+  popularMovies,
+  PopularMovieState,
+  PopularMovieEvents,
+} from '~/components'
+import {storeonDevtools} from 'storeon/devtools'
 
-type StoreState = PostState
+type StoreState = PostState | PopularMovieState
 
-type StoreEvents = PostEvents
+type StoreEvents = PostEvents | PopularMovieEvents
 
-export const store = createStore<StoreState, StoreEvents>([post])
+export const store = createStoreon<StoreState, StoreEvents>([
+  post,
+  popularMovies,
+  process.env.NODE_ENV !== 'production' && storeonDevtools,
+])

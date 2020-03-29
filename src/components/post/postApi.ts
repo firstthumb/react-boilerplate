@@ -1,4 +1,4 @@
-import {client} from '~/components/http'
+import {client} from '~/http'
 import {PostModel} from './postModel'
 
 export const getPosts = (): Promise<PostModel[]> =>
