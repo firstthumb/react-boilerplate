@@ -1,8 +1,6 @@
-import {createStoreon, StoreonModule} from 'storeon'
+import {StoreonModule} from 'storeon'
 import {useStoreon} from 'storeon/react'
 import {IMovie} from '~/common/types'
-import {stat} from 'fs'
-import {statement} from '@babel/template'
 
 export interface PopularMovieState {
   popularMovies: {

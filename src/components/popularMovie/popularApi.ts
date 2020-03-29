@@ -1,4 +1,4 @@
 import {getPopularMovies} from '~/services'
 import {IMovie} from '~/common/types'
 
-export const getPopular = (page: number = 1): Promise<IMovie[]> => getPopularMovies(page)
+export const getPopular = (page = 1): Promise<IMovie[]> => getPopularMovies(page)

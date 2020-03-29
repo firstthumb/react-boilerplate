@@ -23,11 +23,10 @@ const useStyles = makeStyles({
 
 interface MovieCardProps {
   title: string
-  subtitle: string
   posterPath: string
 }
 
-export const MovieCard: React.FC<MovieCardProps> = ({title, subtitle, posterPath}) => {
+export const MovieCard: React.FC<MovieCardProps> = ({title, posterPath}) => {
   const classes = useStyles()
   return (
     <Card className={classes.root}>

@@ -28,10 +28,9 @@ export const PopularMovieList: React.FC = () => {
     const fetchPopularMovies = async () => {
       dispatch('load_popular_movies/set/loading')
       try {
-        const movies = await getPopular(popularMovies.page)
+        const movies = await getPopular(1)
         dispatch('load_popular_movies/set', movies)
       } catch (error) {
-        console.log(`ERROR: ${error}`)
         dispatch('load_popular_movies/set/failed')
       }
     }
@@ -60,12 +59,7 @@ export const PopularMovieList: React.FC = () => {
           <GridList cols={4} spacing={20}>
             {popularMovies.movies.map(movie => (
               <GridListTile key={movie.id}>
-                <MovieCard
-                  key={movie.id}
-                  title={movie.title}
-                  subtitle={movie.overview}
-                  posterPath={movie.poster_path}
-                />
+                <MovieCard key={movie.id} title={movie.title} posterPath={movie.poster_path} />
               </GridListTile>
             ))}
           </GridList>
