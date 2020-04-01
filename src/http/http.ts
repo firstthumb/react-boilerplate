@@ -5,7 +5,7 @@ const TMDB_READ_ACCESS_TOKEN = process.env.REACT_APP_TMDB_READ_ACCESS_TOKEN
 
 export const tmdbApiClient = axios.create({baseURL: TMDB_API_BASE})
 
-tmdbApiClient.interceptors.request.use(config => {
+tmdbApiClient.interceptors.request.use((config) => {
   config.headers['Authorization'] = `Bearer ${TMDB_READ_ACCESS_TOKEN}`
 
   return config

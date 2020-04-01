@@ -40,7 +40,7 @@ const initialState: SearchMovieState = {
   },
 }
 
-export const searchMovies: StoreonModule<SearchMovieState, SearchMovieEvents> = store => {
+export const searchMovies: StoreonModule<SearchMovieState, SearchMovieEvents> = (store) => {
   store.on('@init', () => initialState)
   store.on('search_movies/results', (state, {movies, hasMore}) => {
     return {
@@ -66,7 +66,7 @@ export const searchMovies: StoreonModule<SearchMovieState, SearchMovieEvents> = 
       filter,
     },
   }))
-  store.on('search_movies/failed', state => ({
+  store.on('search_movies/failed', (state) => ({
     ...state,
     searchMovies: {
       movies: state.searchMovies.movies,

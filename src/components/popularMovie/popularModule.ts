@@ -27,7 +27,7 @@ const initialState: PopularMovieState = {
   },
 }
 
-export const popularMovies: StoreonModule<PopularMovieState, PopularMovieEvents> = store => {
+export const popularMovies: StoreonModule<PopularMovieState, PopularMovieEvents> = (store) => {
   store.on('@init', () => initialState)
   store.on('load_popular_movies/set', (state, movies) => {
     return {
@@ -40,7 +40,7 @@ export const popularMovies: StoreonModule<PopularMovieState, PopularMovieEvents>
       },
     }
   })
-  store.on('load_popular_movies/set/loading', state => ({
+  store.on('load_popular_movies/set/loading', (state) => ({
     ...state,
     popularMovies: {
       movies: state.popularMovies.movies,
@@ -49,7 +49,7 @@ export const popularMovies: StoreonModule<PopularMovieState, PopularMovieEvents>
       failed: false,
     },
   }))
-  store.on('load_popular_movies/set/failed', state => ({
+  store.on('load_popular_movies/set/failed', (state) => ({
     ...state,
     popularMovies: {
       movies: state.popularMovies.movies,

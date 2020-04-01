@@ -23,7 +23,7 @@ export const PopularMovieComponent: React.FC = () => {
         loader={<CircularProgress key={Math.random()} color="secondary" />}
       >
         <GridList cols={4} spacing={20}>
-          {popularMovies.movies.map(movie => (
+          {popularMovies.movies.map((movie) => (
             <GridListTile key={Math.random()}>
               <MovieCard title={movie.title} posterPath={movie.poster_path} />
             </GridListTile>

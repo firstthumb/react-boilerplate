@@ -4,7 +4,7 @@ import {useSearchMovies} from './searchModule'
 import {SearchMovieComponent} from './SearchMovieComponent'
 import {PopularMovieComponent} from './PopularMovieComponent'
 
-const useStyle = makeStyles(theme => ({
+const useStyle = makeStyles((theme) => ({
   gridlayout: {
     display: 'flex',
     flexWrap: 'wrap',

@@ -29,7 +29,7 @@ export const SearchMovieComponent: React.FC = () => {
     >
       <GridList cols={4} spacing={20}>
         {searchMovies.movies &&
-          searchMovies.movies.map(movie => (
+          searchMovies.movies.map((movie) => (
             <GridListTile key={Math.random()}>
               <MovieCard title={movie.title} posterPath={movie.poster_path} />
             </GridListTile>

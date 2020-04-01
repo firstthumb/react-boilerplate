@@ -9,7 +9,7 @@ import {useDebounce} from 'use-debounce'
 import {searchMovies} from '~/services'
 import {useSearchMovies, SearchFilter, SearchResult} from '~/components/popularMovie'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -96,7 +96,7 @@ export const TopBar = () => {
               input: classes.inputInput,
             }}
             inputProps={{'aria-label': 'search'}}
-            onChange={e => {
+            onChange={(e) => {
               setSearchTerm(e.target.value)
             }}
           />
