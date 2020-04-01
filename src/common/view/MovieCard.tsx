@@ -28,14 +28,19 @@ interface MovieCardProps {
 
 export const MovieCard: React.FC<MovieCardProps> = ({title, posterPath}) => {
   const classes = useStyles()
+
+  const getPosterPath = () => {
+    if (posterPath) {
+      return `${TMDB_IMAGE_URL}/w500${posterPath}`
+    }
+
+    return ''
+  }
+
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={`${TMDB_IMAGE_URL}/w500${posterPath}`}
-          title={title}
-        >
+        <CardMedia className={classes.media} image={getPosterPath()} title={title}>
           <CardActions disableSpacing>
             <FavoriteIcon color="action" aria-label="add to favorites" />
           </CardActions>

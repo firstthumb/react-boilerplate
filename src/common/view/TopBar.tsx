@@ -1,10 +1,13 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {AppBar, Toolbar, IconButton, Typography, makeStyles, fade} from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search'
 import InputBase from '@material-ui/core/InputBase'
 import FavoriteIcon from '@material-ui/icons/Favorite'
-import ThumbUp from '@material-ui/icons/ThumbUp'
+import Home from '@material-ui/icons/Home'
 import {NavLink} from 'react-router-dom'
+import {useDebounce} from 'use-debounce'
+import {searchMovies} from '~/services'
+import {useSearchMovies, SearchFilter, SearchResult} from '~/components/popularMovie'
 
 const useStyles = makeStyles(theme => ({
   search: {
@@ -47,6 +50,34 @@ const useStyles = makeStyles(theme => ({
 
 export const TopBar = () => {
   const classes = useStyles()
+  const [searchTerm, setSearchTerm] = useState<string>()
+  const [latestSearchTerm] = useDebounce(searchTerm, 1000)
+
+  const {dispatch} = useSearchMovies()
+
+  useEffect(() => {
+    const doSearch = async () => {
+      try {
+        if (latestSearchTerm) {
+          dispatch('search_movies/search', {searchTerm: latestSearchTerm} as SearchFilter)
+          const searchResult = await searchMovies(latestSearchTerm)
+          const movies = searchResult.results
+          if (movies) {
+            const hasMore = searchResult.page < searchResult.total_pages
+            dispatch('search_movies/results', {movies, hasMore} as SearchResult)
+          } else {
+            dispatch('search_movies/clear')
+          }
+        } else {
+          dispatch('search_movies/clear')
+        }
+      } catch {
+        dispatch('search_movies/failed')
+      }
+    }
+
+    doSearch()
+  }, [latestSearchTerm, dispatch])
 
   return (
     <AppBar position="static">
@@ -65,11 +96,14 @@ export const TopBar = () => {
               input: classes.inputInput,
             }}
             inputProps={{'aria-label': 'search'}}
+            onChange={e => {
+              setSearchTerm(e.target.value)
+            }}
           />
         </div>
-        <NavLink to="/popular">
+        <NavLink to="/">
           <IconButton aria-label="Popular">
-            <ThumbUp />
+            <Home />
           </IconButton>
         </NavLink>
         <NavLink to="/favorite">

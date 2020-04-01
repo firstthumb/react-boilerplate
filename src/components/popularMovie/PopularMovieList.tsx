@@ -1,10 +1,8 @@
-import React, {useEffect} from 'react'
-import CircularProgress from '@material-ui/core/CircularProgress'
-import {usePopularMovies} from './popularModule'
-import {getPopular} from './popularApi'
-import {MovieCard} from '~/common/view'
-import {GridList, GridListTile, makeStyles, Typography, Grid} from '@material-ui/core'
-import InfiniteScroll from 'react-infinite-scroller'
+import React from 'react'
+import {makeStyles, Typography, Grid} from '@material-ui/core'
+import {useSearchMovies} from './searchModule'
+import {SearchMovieComponent} from './SearchMovieComponent'
+import {PopularMovieComponent} from './PopularMovieComponent'
 
 const useStyle = makeStyles(theme => ({
   gridlayout: {
@@ -19,56 +17,38 @@ const useStyle = makeStyles(theme => ({
   },
 }))
 
-export const PopularMovieList: React.FC = () => {
+const PopularMovie = () => {
   const classes = useStyle()
 
-  const {dispatch, popularMovies} = usePopularMovies()
-
-  useEffect(() => {
-    const fetchPopularMovies = async () => {
-      dispatch('load_popular_movies/set/loading')
-      try {
-        const movies = await getPopular(1)
-        dispatch('load_popular_movies/set', movies)
-      } catch (error) {
-        dispatch('load_popular_movies/set/failed')
-      }
-    }
-
-    fetchPopularMovies()
-  }, [dispatch])
-
-  const loadMore = async (page: number) => {
-    dispatch('load_popular_movies/next_page', await getPopular(page))
-  }
-
   return (
-    <Grid container direction="column" justify="center" alignItems="center">
+    <>
       <Typography className={classes.heading} variant="h4" color="primary">
         Popular Movies
       </Typography>
+      <PopularMovieComponent />
+    </>
+  )
+}
 
-      {!popularMovies.loading ? (
-        <InfiniteScroll
-          pageStart={0}
-          loadMore={loadMore}
-          threshold={100}
-          hasMore={true || false}
-          loader={<CircularProgress key="z" color="secondary" />}
-        >
-          <GridList cols={4} spacing={20}>
-            {popularMovies.movies.map(movie => (
-              <GridListTile key={movie.id}>
-                <MovieCard key={movie.id} title={movie.title} posterPath={movie.poster_path} />
-              </GridListTile>
-            ))}
-          </GridList>
-        </InfiniteScroll>
-      ) : (
-        <Grid item>
-          <CircularProgress size={50} color="secondary" />
-        </Grid>
-      )}
+const SearchMovie = () => {
+  const classes = useStyle()
+
+  return (
+    <>
+      <Typography className={classes.heading} variant="h4" color="primary">
+        Search Results
+      </Typography>
+      <SearchMovieComponent />
+    </>
+  )
+}
+
+export const PopularMovieList = () => {
+  const {searchMovies} = useSearchMovies()
+
+  return (
+    <Grid container direction="column" justify="center" alignItems="center">
+      {searchMovies.movies ? <SearchMovie /> : <PopularMovie />}
     </Grid>
   )
 }
