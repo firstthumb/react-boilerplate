@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "start": "rimraf ./build && parcel src/index.html -p 5050 -d build",
-    "build": "rimraf ./build && parcel build src/index.html -d build",
+    "build": "rimraf ./build && parcel build src/index.html -d build --public-url ./",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watch",
     "verify": "prettier --check 'src/**/*.+(ts|tsx)' && eslint 'src/**/*.+(ts|tsx)' && tsc --noEmit"
