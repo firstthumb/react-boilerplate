@@ -1093,4 +1093,4 @@ function r(){return module.exports=r=Object.assign||function(r){for(var t=1;t<ar
 },{"react":"n8MK","react-router-dom":"uc19","./pages":"JGgO"}],"zo2T":[function(require,module,exports) {
 "use strict";var e=o(require("react")),r=require("react-dom"),t=require("react-router-dom"),u=require("storeon/react"),l=require("./store"),a=require("./App");function o(e){return e&&e.__esModule?e:{default:e}}(0,r.render)(e.default.createElement(e.default.Fragment,null,e.default.createElement(u.StoreContext.Provider,{value:l.store},e.default.createElement(t.BrowserRouter,null,e.default.createElement(a.App,null)))),document.getElementById("root"));
 },{"react":"n8MK","react-dom":"NKHc","react-router-dom":"uc19","storeon/react":"oVAH","./store":"UyEN","./App":"NHn6"}]},{},["zo2T"], null)
-//# sourceMappingURL=/src.208a8886.js.map
+//# sourceMappingURL=src.208a8886.js.map
