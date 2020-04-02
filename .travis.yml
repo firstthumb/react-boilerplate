@@ -2,4 +2,6 @@ language: node_js
 cache: yarn
 node_js:
   - '12'
-script: yarn test & yarn verify
+script:
+  - yarn test
+  - yarn verify
