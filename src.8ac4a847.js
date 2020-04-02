@@ -1023,7 +1023,7 @@ var e=require("process"),t=require("./utils"),r=require("./helpers/normalizeHead
 },{"./utils":"S1cf","./helpers/bind":"EDTP","./core/Axios":"OvAf","./core/mergeConfig":"OHvn","./defaults":"BXyq","./cancel/Cancel":"mIKj","./cancel/CancelToken":"tsWd","./cancel/isCancel":"V30M","./helpers/spread":"X8jb"}],"dZBD":[function(require,module,exports) {
 module.exports=require("./lib/axios");
 },{"./lib/axios":"nUiQ"}],"Moqt":[function(require,module,exports) {
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.tmdbApiClient=void 0;var e=t(require("axios"));function t(e){return e&&e.__esModule?e:{default:e}}var r="https://api.themoviedb.org/3/",i="",o=e.default.create({baseURL:r});exports.tmdbApiClient=o,o.interceptors.request.use(function(e){return e.headers.Authorization="Bearer ".concat(i),e});
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.tmdbApiClient=void 0;var e=t(require("axios"));function t(e){return e&&e.__esModule?e:{default:e}}var i="https://api.themoviedb.org/3/",r="eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZjE1ZWIyYzQzYzJlZTNjYmVhMTcwYmMxYzIyYmYxMCIsInN1YiI6IjU2OTdhNzMxYzNhMzY4M2FmMDAwMjM4MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VAzqaLYlkfQKgJzy4l4bsWiZDks0BWlPggWRgJQcRb8",s=e.default.create({baseURL:i});exports.tmdbApiClient=s,s.interceptors.request.use(function(e){return e.headers.Authorization="Bearer ".concat(r),e});
 },{"axios":"dZBD"}],"S5DC":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0});var e=require("./http");Object.keys(e).forEach(function(t){"default"!==t&&"__esModule"!==t&&Object.defineProperty(exports,t,{enumerable:!0,get:function(){return e[t]}})});
 },{"./http":"Moqt"}],"Axq1":[function(require,module,exports) {
@@ -1093,4 +1093,4 @@ function r(){return module.exports=r=Object.assign||function(r){for(var t=1;t<ar
 },{"react":"n8MK","react-router-dom":"uc19","./pages":"JGgO"}],"zo2T":[function(require,module,exports) {
 "use strict";var e=o(require("react")),r=require("react-dom"),t=require("react-router-dom"),u=require("storeon/react"),l=require("./store"),a=require("./App");function o(e){return e&&e.__esModule?e:{default:e}}(0,r.render)(e.default.createElement(e.default.Fragment,null,e.default.createElement(u.StoreContext.Provider,{value:l.store},e.default.createElement(t.BrowserRouter,null,e.default.createElement(a.App,null)))),document.getElementById("root"));
 },{"react":"n8MK","react-dom":"NKHc","react-router-dom":"uc19","storeon/react":"oVAH","./store":"UyEN","./App":"NHn6"}]},{},["zo2T"], null)
-//# sourceMappingURL=src.208a8886.js.map
+//# sourceMappingURL=src.8ac4a847.js.map
